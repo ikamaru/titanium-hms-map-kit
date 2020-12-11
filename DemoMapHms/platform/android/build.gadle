@@ -1,0 +1,3 @@
+repositories {
+	maven { url 'https://developer.huawei.com/repo/' } // HUAWEI Maven repository app//todo: DTSE add HMS
+}
