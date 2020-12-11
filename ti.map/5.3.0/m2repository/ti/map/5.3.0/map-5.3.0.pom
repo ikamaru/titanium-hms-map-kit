@@ -36,5 +36,10 @@
       <artifactId>maps</artifactId>
       <version>5.0.1.300</version>
     </dependency>
+    <dependency>
+      <groupId>com.huawei.hms</groupId>
+      <artifactId>base</artifactId>
+      <version>4.0.4.301</version>
+    </dependency>
   </dependencies>
 </project>

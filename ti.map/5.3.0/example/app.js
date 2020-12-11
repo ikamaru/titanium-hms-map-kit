@@ -20,8 +20,8 @@ if (IOS) {
     rows.push(require('tests/properties'));
 }
 
-if (ANDROID && Map.isGooglePlayServicesAvailable() != Map.SUCCESS) {
-        alert ("Google Play Services is not installed/updated/available");
+if (ANDROID && Map.isHuaweiMobileServicesAvailable() != Map.SUCCESS) {
+        alert ("Huawei Mobile Services is not installed/updated/available");
 } else {
     startUI();
 }
