@@ -69,7 +69,7 @@ Note: make sure to update this whenever you want to build a different project wi
 		});
 	}
 ```
--  **Don't forget** to download the **dist\modules\android\ti.map\5.3.0** from this repo and past the **ti.map** folder inside **C:\ProgramData\Titanium\modules\android\\** or replace it with the old **ti.map** module if exists. 
+-  **Make sure** to download the **ti.map/5.3.0** from this repo and past the **ti.map** folder inside **C:\ProgramData\Titanium\modules\android\\** or replace it with the old **ti.map** module if exists. 
 ###### Titanium App side:
 -   Create a Titanium Project using the following command:
 > titanium create --type app --platforms android
