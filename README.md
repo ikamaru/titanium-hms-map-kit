@@ -1,86 +1,45 @@
-# titanium-hms-map-kit
+# HUAWEI MAP Kit - Titanium Module
+
 A Titanium Module to use the following [HUAWEI Map Kit](https://developer.huawei.com/consumer/en/hms/huawei-MapKit)
 
-### 1- Preparations for Integrating HUAWEI HMS Core
-- Run the keytool command to get the SHA256 fingerprint from the keystore: 
->keytool -list -v -keystore hms_test.jks
 
-Note: Replace **hms_test.jks** with your keystore path
-- Obtain the SHA256 fingerprint from the result:
-![key](https://user-images.githubusercontent.com/61454003/101916607-7a38b700-3bc7-11eb-8ddb-c7746432dea8.png)
+## Content
+* [Requirements](#requirements)
+* [Preparation](#preparation)
+* [API](#api)
+* [Example](#example)
+* [Build from source](#build)
 
-- On the AppGallery Connect (AGC) console of [HUAWEI Developer](https://developer.huawei.com/consumer/en/), Select your project or create a new one if you didn't do yet, then:
-    -    Enable Map api by going to the tab **Project Setting** > **Manage APIs**:
-![image](https://user-images.githubusercontent.com/61454003/101917818-ee278f00-3bc8-11eb-98b6-a6373e88d072.png)
-![image](https://user-images.githubusercontent.com/61454003/101917897-04354f80-3bc9-11eb-96df-7c3736ce5293.png)
-    -    Go back to **General information** and past the obtained SHA256 fingerprint, Click √ to save the fingerprint and download then the **agconnect-services.json** file.
-![image](https://user-images.githubusercontent.com/61454003/101918101-3f378300-3bc9-11eb-9633-73beedb855b3.png)
+## Requirements
+- [x] Make sure to add the following [HMS preparation](https://github.com/ikamaru/titanium-hms-env_preparation) Plugin to you project which is responsible for preparing the HMS environment in your project.
 
-### 2- Titanium environment preparation
-#### Titanium SDK side:
--   Add the following lines in the **root.build.gradle** file **C:\ProgramData\Titanium\mobilesdk\win32\9.0.3.GA\android\templates\build\root.build.gradle**
-![image](https://user-images.githubusercontent.com/61454003/101933545-a6aafe00-3bdc-11eb-8647-4c95f4c8401e.png)
-```
-buildscript {
-	repositories {
-	    //
-		maven { url 'https://developer.huawei.com/repo/' } // HUAWEI Maven repository
-	}
-	dependencies {
-	    //
-	    classpath 'com.huawei.agconnect:agcp:1.4.1.300'  // HUAWEI agcp plugin
-	}
-}
-allprojects {
-	repositories {
-		//
-		maven { url 'https://developer.huawei.com/repo/' } // HUAWEI Maven repository
-	}
-}
-```
--   Add the following lines in **app.build.gradle** file **C:\ProgramData\Titanium\mobilesdk\win32\9.0.3.GA\android\templates\build\app.build.gradle**
-![image](https://user-images.githubusercontent.com/61454003/101934612-1ec5f380-3bde-11eb-9832-19cbf4e32c5a.png)
-```
-// Apply the Huawei plugin if included
-if (file("${projectDir}/agconnect-services.json").exists()) {
-	apply plugin: 'com.huawei.agconnect'
-}
-```
--   In the same **app.build.gradle** file change the *signingConfig > config* by inserting the full path , password and alias of your keystore as in the following
-![image](https://user-images.githubusercontent.com/61454003/101953756-395a9580-3bfb-11eb-88eb-2a85989648e2.png)
-```
-config {
-	storeFile file("your_keystore_full_path")
-	storePassword "your_keystore_password"
-	keyAlias "your_keystore_alias"
-	keyPassword "your_keystore_password"
-}
-```
-Note: make sure to update this whenever you want to build a different project with the correspending keystore
--   Add the following lines responsible for copying the **agconnect-services.json** file we downloaded using HUAWEI Developer Console from your Titanium project to the app-level of the generated Android project: **C:\ProgramData\Titanium\mobilesdk\win32\9.0.3.GA\android\cli\commands\_build.js**
-![image](https://user-images.githubusercontent.com/61454003/101935025-b3c8ec80-3bde-11eb-9f86-a382f944c05f.png)
-```
-//huawei services
-	const huaweiServicesFile = path.join(this.projectDir, 'platform', 'android', 'agconnect-services.json');
-	if (await fs.exists(huaweiServicesFile)) {
-		afs.copyFileSync(huaweiServicesFile, path.join(this.buildAppDir, 'agconnect-services.json'), {
-			logger: this.logger.debug
-		});
-	}
-```
--  **Make sure** to download the **ti.map\5.3.0** from this repo and past the **ti.map** folder inside **C:\ProgramData\Titanium\modules\android\\** or replace it with the old **ti.map** module if exists. 
-#### Titanium App side:
--   Create a Titanium Project using the following command:
-> titanium create --type app --platforms android
--   Create a **platform\android** folder in your Titanium project's root path, inside of this folder create a **build.gradle** file and put the **agconnect-services.json** file downloaded using HUAWEI Developer Console:
-![image](https://user-images.githubusercontent.com/61454003/101936459-e1169a00-3be0-11eb-8738-a19f2ee7dd53.png)
--   Inside **tiapp.xml** add the **ti.map** module we downloaded before:
-```
+## Preparation
+- [x] Download the `ti.map` folder from this repo and past it inside `C:\ProgramData\Titanium\modules\android\` then add this module to your **tiapp.xml** as the following
+```xml
 <modules>
-	<module version="5.3.0" platform="android">ti.map</module>
+ <module version="5.3.0" platform="android">ti.map</module>
 </modules>
 ```
--  You can test the demo existing in this repo by replacing the **DemoMapHms\Resources\\** folder with the **Resources folder** inside your Titanium app that we created with the previous command, then build the project:
->    titanium build --platform android
+- [x] Before using Map Kit, enable it. For details, please refer to [Enabling Required Services](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001061560289-V5).
+- [x] After enabling the Map Kit make sure to re-download the `agconnect-services.json` and past it to the **platform/android** folder of your project as described in the HMS preparation [HMS preparation](https://github.com/ikamaru/titanium-hms-env_preparation#structure-of-the-project) Plugin 
+
+## API
+- This module was built in a similar way to the [**ti.map** provided by Appaccelerator](https://docs.appcelerator.com/platform/latest/#!/api/Modules.Map), which means that the doc of this module is totally similar to the doc of the ti.map that you can consult by clicking on the following [link](https://docs.appcelerator.com/platform/latest/#!/api/Modules.Map).
+- If you have already integrated the [**ti.map** provided by Appaccelerator](https://docs.appcelerator.com/platform/latest/#!/api/Modules.Map) in your app, there is no need to change anything in your code, just follow the previous configuration and the HUAWEI map will be ready in your project. The only difference is that you have to replace in your code the isGoogleMobileServicesAvailable method with isHuaweiMobileServicesAvailable method.
+- In the **[ti.map documentation](https://docs.appcelerator.com/platform/latest/#!/api/Modules.Map)**, it is written that you must to add the API Key of the map in the **tiapp.xml** file but for us, this is not the case as we have already added the **agconnect-services.json** file to the project.
+
+## Example
+- You can test the demo existing in this repo by replacing the **Resources** folder in the **DemoMapHms** in this repo with the **Resources** folder inside your Titanium app that we created with the previously, then build.
+
+## Build
+```bash
+titanium build --platform android --keystore "PATH_TO_KEY_STORE.jks" --key-password "KEY_PWS" --alias "ALIAS" --store-password "STORE_PWD" 
+```
+> **Note**: 
+> - When building for Android, make sure you have sign the app using the keystore that you used to configure your SHA256 fingerprint of your project in AppGallery Connect 
+> - you can add `-T device -C all` to the above command to run on the device directly. 
 
 ![ti map_result](https://user-images.githubusercontent.com/61454003/101955022-5abc8100-3bfd-11eb-9658-56a7b22f04ff.gif)
+## Legal
+
+(c) 2021 by *Ikamaru*
