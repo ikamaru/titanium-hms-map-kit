@@ -1,3 +1,1 @@
-repositories {
-	maven { url 'https://developer.huawei.com/repo/' } // HUAWEI Maven repository
-}
+apply plugin: 'com.huawei.agconnect'
