@@ -1,2 +1,4 @@
 DemoMapHms/build/
+agconnect-services.json
 HMS_map_module/
+*.jks
