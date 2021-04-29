@@ -1,17 +1,36 @@
 {
 	"agcgw":{
 		"backurl":"connect-dre.dbankcloud.cn",
-		"url":"connect-dre.hispace.hicloud.com"
+		"url":"connect-dre.hispace.hicloud.com",
+		"websocketbackurl":"connect-ws-dre.hispace.dbankcloud.cn",
+		"websocketurl":"connect-ws-dre.hispace.dbankcloud.com"
+	},
+	"agcgw_all":{
+		"CN":"connect-drcn.hispace.hicloud.com",
+		"CN_back":"connect-drcn.dbankcloud.cn",
+		"DE":"connect-dre.hispace.hicloud.com",
+		"DE_back":"connect-dre.dbankcloud.cn",
+		"RU":"connect-drru.hispace.hicloud.com",
+		"RU_back":"connect-drru.dbankcloud.cn",
+		"SG":"connect-dra.hispace.hicloud.com",
+		"SG_back":"connect-dra.dbankcloud.cn"
 	},
 	"client":{
-		"appType":"1",
 		"cp_id":"890212000000000286",
 		"product_id":"736430079244709596",
 		"client_id":"499960397613248896",
 		"client_secret":"0E6F1AEA6F341E20308C8CCA78C3275D5317A8253CB53BAC7375E3AE2DD7A57D",
 		"project_id":"736430079244709596",
 		"app_id":"103318003",
-		"api_key":"CgB6e3x9QXBlsp7gF2fUEl4w55DUTo0TPLhu+ORyYSYnCcOyPxvZi69v//q7TJf5dZdw8JZHdBJGvyOSeIjY+F8E",
+		"api_key":"CgB6e3x9b1L3tQyANiQaW8WBwYW892aqPV2xW5D9wfdSYcDZzwKgAJdSFLs/Xgg036wc0tr1+XeA/purwVg10Gp7",
+		"package_name":"com.ikamaru.dtse.hms.test"
+	},
+	"oauth_client":{
+		"client_id":"103318003",
+		"client_type":1
+	},
+	"app_info":{
+		"app_id":"103318003",
 		"package_name":"com.ikamaru.dtse.hms.test"
 	},
 	"service":{
@@ -31,5 +50,21 @@
 		}
 	},
 	"region":"DE",
-	"configuration_version":"1.0"
+	"configuration_version":"3.0",
+	"appInfos":[
+		{
+			"package_name":"com.ikamaru.dtse.hms.test",
+			"client":{
+				"app_id":"103318003"
+			},
+			"app_info":{
+				"package_name":"com.ikamaru.dtse.hms.test",
+				"app_id":"103318003"
+			},
+			"oauth_client":{
+				"client_type":1,
+				"client_id":"103318003"
+			}
+		}
+	]
 }
