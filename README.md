@@ -17,7 +17,7 @@ A Titanium Module to use the following [HUAWEI Map Kit](https://developer.huawei
 - [x] Download the `ti.map` folder from this repo and past it inside `modules/android/` then add this module to your **tiapp.xml** as the following
 ```xml
 <modules>
- <module version="5.4.0" platform="android">ti.map</module>
+ <module version="5.4.1" platform="android">ti.map</module>
 </modules>
 ```
 - [x] Before using Map Kit, enable it. For details, please refer to [Enabling Required Services](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001061560289-V5).
