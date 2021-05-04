@@ -42,13 +42,13 @@
 		</plist>
 	</ios>
 	<modules>
-		<module version="5.4.0" platform="android">ti.map</module>
+		<module version="5.4.1" platform="android">ti.map</module>
 	</modules>
 	<plugins>
-		<plugin version="2.0">com.ikamaru.ti.hms.env_preparation</plugin>
+		<plugin version="2.1">com.ikamaru.ti.hms.env_preparation</plugin>
 	</plugins>
 	<deployment-targets>
 		<target device="android">true</target>
 	</deployment-targets>
-	<sdk-version>9.0.3.GA</sdk-version>
+	<sdk-version>9.0.2.GA</sdk-version>
 </ti:app>
